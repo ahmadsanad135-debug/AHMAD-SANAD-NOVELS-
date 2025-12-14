@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>حالة الطلب - <%= order.id %></title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <a href="/">◀ المتجر</a>
+  <h1>الطلب رقم: <%= order.id %></h1>
+  <p><strong>الرواية:</strong> <%= order.novelTitle %></p>
+  <p><strong>الحالة:</strong> <%= order.status %></p>
+  <p><strong>السعر:</strong> $<%= order.price %></p>
+  <p><strong>تاريخ الإنشاء:</strong> <%= order.createdAt %></p>
+
+  <% if (order.status === 'pending') { %>
+    <h3>تعليمات الدفع (مثال)</h3>
+    <p>قم بتحويل المبلغ إلى حسابنا البنكي: اسم البنك: بنك المثال، رقم الحساب: 123456789، اسم المستفيد: متجر الروايات.</p>
+    <p>بعد إتمام التحويل، أبلغني برقم الطلب (<strong><%= order.id %></strong>) وسأعلّم الطلب كـ "مدفوع".</p>
+  <% } else if (order.status === 'paid') { %>
+    <h3>شكراً! تم تفعيل التحميل</h3>
+    <p>يمكنك تحميل روايتك من الرابط التالي:</p>
+    <a class="btn" href="/download/<%= order.id %>">تحميل الرواية</a>
+  <% } %>
+</body>
+</html>
