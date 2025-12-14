@@ -1,0 +1,18 @@
+[
+  {
+    "id": "novel1",
+    "title": "رواية المثال",
+    "author": "كاتب نموذجي",
+    "price": 4.99,
+    "description": "وصف قصير للرواية التجريبية.",
+    "file": "downloads/novel1.pdf"
+  },
+  {
+    "id": "novel2",
+    "title": "رواية ثانية",
+    "author": "مؤلف آخر",
+    "price": 6.50,
+    "description": "رواية شيقة في أمثلة التطبيق.",
+    "file": "downloads/novel2.pdf"
+  }
+]
