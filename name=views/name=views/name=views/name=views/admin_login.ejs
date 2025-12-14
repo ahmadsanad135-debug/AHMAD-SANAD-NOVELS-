@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>دخول الإدارة</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <h1>لوحة الإدارة — تسجيل الدخول</h1>
+  <% if (message) { %>
+    <p class="error"><%= message %></p>
+  <% } %>
+  <form action="/admin" method="get">
+    <label>المفتاح الإداري:<br>
+      <input type="text" name="key" placeholder="أدخل المفتاح">
+    </label><br><br>
+    <button class="btn" type="submit">دخول</button>
+  </form>
+  <p>المفتاح الافتراضي في المثال: <code>secret-admin-key</code> (أغيره عبر متغير البيئة ADMIN_KEY)</p>
+</body>
+</html>
