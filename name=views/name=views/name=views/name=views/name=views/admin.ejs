@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>لوحة الإدارة</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <h1>لوحة الإدارة — الطلبات</h1>
+  <p>تم الدخول باستخدام المفتاح الإداري.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>معرّف الطلب</th>
+        <th>الرواية</th>
+        <th>العميل</th>
+        <th>السعر</th>
+        <th>الحالة</th>
+        <th>إجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function(o){ %>
+        <tr>
+          <td><%= o.id %></td>
+          <td><%= o.novelTitle %></td>
+          <td><%= o.customerName || o.customerEmail || '-' %></td>
+          <td>$<%= o.price %></td>
+          <td><%= o.status %></td>
+          <td>
+            <% if (o.status !== 'paid') { %>
+              <form action="/admin/mark-paid" method="post" style="display:inline">
+                <input type="hidden" name="key" value="<%= key %>">
+                <input type="hidden" name="orderId" value="<%= o.id %>">
+                <button class="btn small" type="submit">وسم كمدفوع</button>
+              </form>
+            <% } else { %>
+              <span>مدفوع</span>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <p><a href="/">الذهاب للمتجر</a></p>
+</body>
+</html>
