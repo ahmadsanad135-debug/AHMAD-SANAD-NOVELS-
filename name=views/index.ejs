@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>متجري - روايات</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <h1>المتجر - روايات</h1>
+  <ul>
+    <% novels.forEach(function(n){ %>
+      <li class="novel">
+        <h3><a href="/novel/<%= n.id %>"><%= n.title %></a></h3>
+        <p><strong>المؤلف:</strong> <%= n.author %></p>
+        <p><%= n.description %></p>
+        <p><strong>السعر:</strong> $<%= n.price %></p>
+        <a class="btn" href="/novel/<%= n.id %>">عرض وطلب</a>
+      </li>
+    <% }) %>
+  </ul>
+  <footer>
+    <p>لإدارة الطلبات: افتح /admin ثم أدخل المفتاح الإداري.</p>
+  </footer>
+</body>
+</html>
