@@ -17,6 +17,9 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 #search {
@@ -44,98 +47,149 @@ select {
   border-radius: 6px;
 }
 
-.book {
-  width: 100%;  /* كل كتاب يأخذ عرض الصفحة */
-  margin-bottom: 20px; /* مسافة بين الكتب */
+.books-container {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 20px;
+  margin: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .book {
-  background: white;
+  display: flex;
+  gap: 20px;
+  background: #fefefe;
   padding: 15px;
   border-radius: 10px;
-  text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  align-items: center;
 }
 
 .book img {
   width: 120px;
   height: 180px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .book img:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.book-info {
+  flex: 1;
 }
 
 .book h3 {
-  margin: 10px 0 5px;
+  margin: 0 0 10px 0;
 }
 
 .book p {
+  margin: 0 0 10px 0;
   font-size: 14px;
   color: #333;
 }
 
 .book button {
-  margin-top: 10px;
   padding: 8px 12px;
   background: blue;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+.book button:hover {
+  background: darkblue;
 }
 
   </style>
 </head>
 <body><header>
-  <input type="text" id="search" placeholder="Search for a book..." onkeyup="searchBooks()" />  <select id="filter" onchange="filterBooks()">
+  <input type="text" id="search" placeholder="Search for a book..." onkeyup="searchBooks()" />
+  <select id="filter" onchange="filterBooks()">
     <option value="new">Newest</option>
     <option value="cheap">Cheapest</option>
     <option value="popular">Most Popular</option>
-  </select>  <div id="cart">🛒 Cart (0)</div>
-</header><main id="books">
-  <div class="book" data-price="10" data-popularity="5">
-    <img src="shadows-of-magic.png" alt="Shadows of Magic">
-    <h3>Shadows of Magic</h3>
-    <p>A thrilling tale of magic and adventure.</p>
-    <button onclick="addToCart()">Add to Cart</button>
-  </div>  <div class="book" data-price="12" data-popularity="8">
-    <img src="storms-vow.png" alt="Storm's Vow">
+  </select>
+  <div id="cart">🛒 Cart (0)</div>
+</header><div class="books-container">
+  <main id="books">
+    <div class="book" data-price="10" data-popularity="5">
+      <img src="shadows-of-magic.png" alt="Shadows of Magic">
+      <div class="book-info">
+        <h3>Shadows of Magic</h3>
+        <p>A thrilling tale of magic and adventure.</p>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div><div class="book" data-price="12" data-popularity="8">
+  <img src="storms-vow.png" alt="Storm's Vow">
+  <div class="book-info">
     <h3>Storm's Vow</h3>
     <p>An epic story of loyalty and courage.</p>
     <button onclick="addToCart()">Add to Cart</button>
-  </div>  <div class="book" data-price="15" data-popularity="9">
-    <img src="stormborn.png" alt="Stormborn">
+  </div>
+</div>
+
+<div class="book" data-price="15" data-popularity="9">
+  <img src="stormborn.png" alt="Stormborn">
+  <div class="book-info">
     <h3>Stormborn</h3>
     <p>A gripping fantasy saga full of battles.</p>
     <button onclick="addToCart()">Add to Cart</button>
-  </div>  <div class="book" data-price="14" data-popularity="7">
-    <img src="the-fall-of-nyxar.png" alt="The Fall of Nyxar">
+  </div>
+</div>
+
+<div class="book" data-price="14" data-popularity="7">
+  <img src="the-fall-of-nyxar.png" alt="The Fall of Nyxar">
+  <div class="book-info">
     <h3>The Fall of Nyxar</h3>
     <p>The dramatic fall of an empire and its secrets.</p>
     <button onclick="addToCart()">Add to Cart</button>
-  </div>  <div class="book" data-price="11" data-popularity="6">
-    <img src="humanitys-ruin.png" alt="Humanity's Ruin">
+  </div>
+</div>
+
+<div class="book" data-price="11" data-popularity="6">
+  <img src="humanitys-ruin.png" alt="Humanity's Ruin">
+  <div class="book-info">
     <h3>Humanity's Ruin</h3>
     <p>A dark tale of survival and human nature.</p>
     <button onclick="addToCart()">Add to Cart</button>
-  </div>  <div class="book" data-price="13" data-popularity="8">
-    <img src="whispers-of-hope.png" alt="Whispers of Hope">
+  </div>
+</div>
+
+<div class="book" data-price="13" data-popularity="8">
+  <img src="whispers-of-hope.png" alt="Whispers of Hope">
+  <div class="book-info">
     <h3>Whispers of Hope</h3>
     <p>A story of courage, love, and hope.</p>
     <button onclick="addToCart()">Add to Cart</button>
-  </div>  <div class="book" data-price="16" data-popularity="10">
-    <img src="alexs-journey.png" alt="Alex's Journey">
+  </div>
+</div>
+
+<div class="book" data-price="16" data-popularity="10">
+  <img src="alexs-journey.png" alt="Alex's Journey">
+  <div class="book-info">
     <h3>Alex's Journey</h3>
     <p>An epic adventure of growth and discovery.</p>
     <button onclick="addToCart()">Add to Cart</button>
   </div>
-</main><script>
+</div>
+
+  </main>
+</div><script>
   let cartCount = 0;
 
   function addToCart() {
@@ -149,7 +203,7 @@ select {
 
     books.forEach(book => {
       const title = book.querySelector('h3').innerText.toLowerCase();
-      book.style.display = title.includes(value) ? 'block' : 'none';
+      book.style.display = title.includes(value) ? 'flex' : 'none';
     });
   }
 
