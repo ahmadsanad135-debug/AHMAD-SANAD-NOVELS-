@@ -137,17 +137,42 @@
   <option value="cheap">Cheapest</option>
   <option value="popular">Most Popular</option>
 </select>
+.book {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
 
+.book-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-btn {
+  margin-top: 10px;
+  width: 130px;
+  padding: 8px;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cart-btn:hover {
+  background: darkblue;
+}
   </div>  <div id="cart">🛒 Cart (0)</div>
-</header><div class="books-container">
-  <div id="books"><div class="book" data-price="3" data-popularity="5">
+</<div class="book-left">
   <img src="shadows-of-magic.jpg" alt="Shadows of Magic">
-  <div class="book-info">
-    <h3>Shadows of Magic</h3>
-    <p>A thrilling tale of magic and adventure.</p>
-    <div class="price">$3</div>
-    <button onclick="addToCart()">Add to Cart</button>
-  </div>
+  <button class="cart-btn" onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="book-info">
+  <h3>Shadows of Magic</h3>
+  <p>A thrilling tale of magic and adventure.</p>
+  <div class="price">$3</div>
 </div>
 
 <div class="book" data-price="2" data-popularity="8">
@@ -170,6 +195,7 @@
   </div>
 </div>
 
+  
 <div class="book" data-price="2" data-popularity="7">
   <img src="the-fall-of-nyxar.jpg" alt="The Fall of Nyxar">
   <div class="book-info">
