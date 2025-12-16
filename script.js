@@ -36,3 +36,12 @@ function searchBooks() {
       title.includes(input) ? "block" : "none";
   }
                      }
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c')) {
+      e.preventDefault();
+    }
+  });
+</script>
