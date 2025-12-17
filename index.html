@@ -3,199 +3,303 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Store</title>
+  <title>Online Book Store</title>
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
       margin: 0;
-      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f2f2;
+      color: #000;
     }
+
     header {
-      background: #0070ba;
-      color: white;
-      padding: 15px;
-      text-align: center;
       position: sticky;
       top: 0;
+      background: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 100;
     }
+
+    #search {
+      padding: 10px;
+      width: 220px;
+      border: 2px solid blue;
+      border-radius: 6px;
+      color: black;
+      outline: none;
+    }
+
+    #search:focus {
+      background: #e6f0ff;
+    }
+
+    select {
+      padding: 9px;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
+
     #cart {
-      float: right;
-      cursor: pointer;
-      font-size: 18px;
+      background: blue;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
     }
+
     .books-container {
+      max-width: 1000px;
+      margin: 25px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-height: 650px;
+      overflow-y: auto;
+    }
+
+    .book {
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: #fafafa;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .book-left {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
     }
-    .book {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      margin: 10px 0;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+
     .book img {
-      width: 100%;
-      border-radius: 8px;
+      width: 130px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 10px;
     }
-    .book h3 {
-      margin: 10px 0 5px 0;
-      font-size: 20px;
-    }
-    .book p {
-      font-size: 14px;
-      color: #555;
-    }
-    .book .price {
-      font-weight: bold;
-      margin: 10px 0;
-      font-size: 16px;
-    }
-    input[type="submit"] {
-      background: #0070ba;
+
+    .cart-btn {
+      margin-top: 10px;
+      width: 130px;
+      padding: 8px;
+      background: blue;
       color: white;
       border: none;
-      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
     }
-    input[type="submit"]:hover {
-      background: #004c8c;
+
+    .cart-btn:hover {
+      background: darkblue;
     }
-    @media (max-width: 600px) {
+
+    .book-info { flex: 1; }
+
+    .book-info h3 { margin: 0 0 8px 0; }
+
+    .book-info p {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .price { font-weight: bold; }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
       .book {
-        width: 95%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .book img {
+        width: 160px;
+        height: auto;
+      }
+
+      .cart-btn {
+        width: 160px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Book Store</h1>
-    <div id="cart">🛒 Cart (0)</div>
-  </header>
 
-  <div class="books-container">
-
-    <!-- Book 1 -->
-    <div class="book" data-price="3">
-      <img src="shadows-of-magic.jpeg" alt="Shadows of Magic">
-      <h3>Shadows of Magic</h3>
-      <p>A thrilling tale of magic and adventure.</p>
-      <div class="price">$3</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
-        <input type="hidden" name="item_name" value="Shadows of Magic">
-        <input type="hidden" name="amount" value="3.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="submit" value="Buy with PayPal">
-      </form>
-    </div>
-
-    <!-- Book 2 -->
-    <div class="book" data-price="4">
-      <img src="storms-vow.jpeg" alt="Storm's Vow">
-      <h3>Storm's Vow</h3>
-      <p>A captivating story of love and bravery.</p>
-      <div class="price">$4</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
-        <input type="hidden" name="item_name" value="Storm's Vow">
-        <input type="hidden" name="amount" value="4.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="submit" value="Buy with PayPal">
-      </form>
-    </div>
-
-    <!-- Book 3 -->
-    <div class="book" data-price="5">
-      <img src="stormborn.jpeg" alt="Stormborn">
-      <h3>Stormborn</h3>
-      <p>An epic adventure of courage and destiny.</p>
-      <div class="price">$5</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
-        <input type="hidden" name="item_name" value="Stormborn">
-        <input type="hidden" name="amount" value="5.00">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="submit" value="Buy with PayPal">
-      </form>
-    </div>
-
-    <!-- Book 4 -->
-    <div class="book" data-price="4.5">
-      <img src="the-fall-of-nyxar.jpeg" alt="The Fall of Nyxar">
-      <h3>The Fall of Nyxar</h3>
-      <p>A dark fantasy full of intrigue and mystery.</p>
-      <div class="price">$4.50</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
-        <input type="hidden" name="item_name" value="The Fall of Nyxar">
-        <input type="hidden" name="amount" value="4.50">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="submit" value="Buy with PayPal">
-      </form>
-    </div>
-
-    <!-- Book 5 -->
-    <div class="book" data-price="3.5">
-      <img src="humanitys-ruin.jpeg" alt="Humanity's Ruin">
-      <h3>Humanity's Ruin</h3>
-      <p>A suspenseful story about survival and hope.</p>
-      <div class="price">$3.50</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
-        <input type="hidden" name="item_name" value="Humanity's Ruin">
-        <input type="hidden" name="amount" value="3.50">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="submit" value="Buy with PayPal">
-      </form>
-    </div>
-
-    <!-- Book 6 -->
-    <div class="book" data-price="4.2">
-      <img src="whispers-of-hope.jpeg" alt="Whispers of Hope">
-      <h3>Whispers of Hope</h3>
-      <p>An inspiring story about courage and friendship.</p>
-      <div class="price">$4.20</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
-        <input type="hidden" name="item_name" value="Whispers of Hope">
-        <input type="hidden" name="amount" value="4.20">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="submit" value="Buy with PayPal">
-      </form>
-    </div>
-
+<header>
+  <div>
+    <input type="text" id="search" placeholder="Search books..." onkeyup="searchBooks()">
+    <select id="filter" onchange="filterBooks()">
+      <option value="new">Newest</option>
+      <option value="cheap">Cheapest</option>
+      <option value="popular">Most Popular</option>
+    </select>
   </div>
+  <div id="cart">🛒 Cart</div>
+</header>
 
-  <script>
-    // Simple cart counter
-    let cartCount = 0;
-    const cart = document.getElementById('cart');
-    const buyButtons = document.querySelectorAll('input[type="submit"]');
+<div class="books-container">
+<div id="books">
 
-    buyButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        cartCount++;
-        cart.textContent = `🛒 Cart (${cartCount})`;
-      });
-    });
-  </script>
+<!-- Book 1 -->
+<div class="book" data-price="3" data-popularity="5">
+  <div class="book-left">
+    <img src="shadows-of-magic.jpeg">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
+      <input type="hidden" name="item_name" value="Shadows of Magic">
+      <input type="hidden" name="amount" value="3.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="cart-btn" value="Buy Now">
+    </form>
+  </div>
+  <div class="book-info">
+    <h3>Shadows of Magic</h3>
+    <p>A thrilling tale of magic and adventure.</p>
+    <div class="price">$3</div>
+  </div>
+</div>
+
+<!-- Book 2 -->
+<div class="book" data-price="4" data-popularity="8">
+  <div class="book-left">
+    <img src="storms-vow.jpeg">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
+      <input type="hidden" name="item_name" value="Storm's Vow">
+      <input type="hidden" name="amount" value="4.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="cart-btn" value="Buy Now">
+    </form>
+  </div>
+  <div class="book-info">
+    <h3>Storm's Vow</h3>
+    <p>An epic story of loyalty and courage.</p>
+    <div class="price">$2</div>
+  </div>
+</div>
+
+<!-- Book 3 -->
+<div class="book" data-price="5" data-popularity="9">
+  <div class="book-left">
+    <img src="stormborn.jpeg">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
+      <input type="hidden" name="item_name" value="Stormborn">
+      <input type="hidden" name="amount" value="5.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="cart-btn" value="Buy Now">
+    </form>
+  </div>
+  <div class="book-info">
+    <h3>Stormborn</h3>
+    <p>A gripping fantasy saga full of battles.</p>
+    <div class="price">$2</div>
+  </div>
+</div>
+
+<!-- Book 4 -->
+<div class="book" data-price="4" data-popularity="7">
+  <div class="book-left">
+    <img src="the-fall-of-nyxar.jpeg">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
+      <input type="hidden" name="item_name" value="The Fall of Nyxar">
+      <input type="hidden" name="amount" value="4.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="cart-btn" value="Buy Now">
+    </form>
+  </div>
+  <div class="book-info">
+    <h3>The Fall of Nyxar</h3>
+    <p>The dramatic fall of an empire and its secrets.</p>
+    <div class="price">$2</div>
+  </div>
+</div>
+
+<!-- Book 5 -->
+<div class="book" data-price="3" data-popularity="6">
+  <div class="book-left">
+    <img src="humanitys-ruin.jpeg">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
+      <input type="hidden" name="item_name" value="Humanity's Ruin">
+      <input type="hidden" name="amount" value="3.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="cart-btn" value="Buy Now">
+    </form>
+  </div>
+  <div class="book-info">
+    <h3>Humanity's Ruin</h3>
+    <p>A dark tale of survival and human nature.</p>
+    <div class="price">$2</div>
+  </div>
+</div>
+
+<!-- Book 6 -->
+<div class="book" data-price="4" data-popularity="8">
+  <div class="book-left">
+    <img src="whispers-of-hope.jpeg">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="Mohammad092010@hotmail.com">
+      <input type="hidden" name="item_name" value="Whispers of Hope">
+      <input type="hidden" name="amount" value="4.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="submit" class="cart-btn" value="Buy Now">
+    </form>
+  </div>
+  <div class="book-info">
+    <h3>Whispers of Hope</h3>
+    <p>A story of courage, love, and hope.</p>
+    <div class="price">$2</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<script>
+function searchBooks() {
+  const value = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.book').forEach(book => {
+    const title = book.querySelector('h3').innerText.toLowerCase();
+    book.style.display = title.includes(value) ? 'flex' : 'none';
+  });
+}
+
+function filterBooks() {
+  const filter = document.getElementById('filter').value;
+  const container = document.getElementById('books');
+  const books = Array.from(document.querySelectorAll('.book'));
+
+  if (filter === 'cheap') books.sort((a, b) => a.dataset.price - b.dataset.price);
+  if (filter === 'popular') books.sort((a, b) => b.dataset.popularity - a.dataset.popularity);
+
+  books.forEach(book => container.appendChild(book));
+}
+</script>
 
 </body>
-  </html> 
+  </html>
+         PUBLISHED BY AHMAD SANAD 
