@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# رابط خريطة الموقع الخاصة بك
+Sitemap: https://ahmadsanad135-debug.github.io/AHMAD-SANAD-NOVELS/sitemap.xml
