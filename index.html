@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AHMADSANADNOVELS </title>
+  
+  <meta name="google-site-verification" content="امسح_هذه_الكلمة_وضع_الكود_الطويل_من_جوجل_هنا" />
+  <title>AHMADSANADNOVELS</title>
+  <meta name="description" content="Official website of Ahmad Sanad Novels. Buy and read the latest fantasy and thriller books.">
 
   <style>
     * { box-sizing: border-box; }
@@ -99,36 +102,32 @@
       border-radius: 6px;
       cursor: pointer;
     }
-.cart-btn:hover {
+    .cart-btn:hover {
       background: darkblue;
     }
-
-    .book-info { flex: 1; }
-
-    .book-info h3 { margin: 0 0 8px 0; }
-
-    .book-info p {
-      margin: 0 0 12px 0;
-      font-size: 14px;
-      color: #333;
-    }
     .price { font-weight: bold; }
+
+    .footer-text {
+        text-align: center; 
+        padding: 20px; 
+        font-weight: bold; 
+        color: #555;
+    }
 
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         gap: 10px;
       }
-
       .book {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-
       .book img {
         width: 160px;
         height: auto;
+      }
     }
   </style>
 </head>
@@ -144,13 +143,12 @@
       <option value="popular">Most Popular</option>
     </select>
   </div>
-  <div id="cart"> Cart</div>
+  <div id="cart">🛒 Cart</div>
 </header>
 
 <div class="books-container">
 <div id="books">
 
-<!-- Book 1 -->
 <div class="book" data-price="3" data-popularity="5">
   <div class="book-left">
     <img src="shadows-of-magic.jpeg">
@@ -170,7 +168,6 @@
   </div>
 </div>
 
-<!-- Book 2 -->
 <div class="book" data-price="2" data-popularity="8">
   <div class="book-left">
     <img src="storms-vow.jpeg">
@@ -190,7 +187,6 @@
   </div>
 </div>
 
-<!-- Book 3 -->
 <div class="book" data-price="2" data-popularity="9">
   <div class="book-left">
     <img src="stormborn.jpeg">
@@ -210,7 +206,6 @@
   </div>
 </div>
 
-<!-- Book 4 -->
 <div class="book" data-price="2" data-popularity="7">
   <div class="book-left">
     <img src="the-fall-of-nyxar.jpeg">
@@ -230,7 +225,6 @@
   </div>
 </div>
 
-<!-- Book 5 -->
 <div class="book" data-price="2" data-popularity="6">
   <div class="book-left">
     <img src="humanitys-ruin.jpeg">
@@ -250,7 +244,6 @@
   </div>
 </div>
 
-<!-- Book 6 -->
 <div class="book" data-price="2" data-popularity="8">
   <div class="book-left">
     <img src="whispers-of-hope.jpeg">
@@ -271,6 +264,10 @@
 </div>
 
 </div>
+</div>
+
+<div class="footer-text">
+    PUBLISHED BY AHMAD SANAD
 </div>
 
 <script>
@@ -295,5 +292,5 @@ function filterBooks() {
 </script>
 
 </body>
-  </html>
-PUBLISHED BY AHMAD SANAD 
+</html>
+ 
