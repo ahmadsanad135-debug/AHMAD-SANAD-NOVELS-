@@ -186,30 +186,4 @@
 
   <div class="footer-text">
     PUBLISHED BY AHMAD SANAD 
-  </div>
-</div>
-
-<script>
-function searchBooks() {
-  const value = document.getElementById('search').value.toLowerCase();
-  document.querySelectorAll('.book').forEach(book => {
-    const title = book.querySelector('h3').innerText.toLowerCase();
-    book.style.display = title.includes(value) ? 'flex' : 'none';
-  });
-}
-
-function filterBooks() {
-  const filter = document.getElementById('filter').value;
-  const container = document.getElementById('books');
-  const books = Array.from(document.querySelectorAll('.book'));
-
-  if (filter === 'cheap') books.sort((a, b) => a.dataset.price - b.dataset.price);
-  if (filter === 'popular') books.sort((a, b) => b.dataset.popularity - a.dataset.popularity);
-
-  books.forEach(book => container.appendChild(book));
-}
-</script>
-
-</body>
-</html>
-PUBLISHED BY AHMAD SANAD 
+  
